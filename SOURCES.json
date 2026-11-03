@@ -1,0 +1,90 @@
+{
+  "install": [
+    "git clone --recurse-submodules https://github.com/not-pishii/compilation.git ~/projects/compilation",
+    "merge skills.json into ~/.config/opencode/opencode.json"
+  ],
+  "target": "~/.config/opencode/opencode.json (global config)",
+  "notes": [
+    "This repository holds no skill copies. It is a settings package: submodule pins plus the skills.paths list that points OpenCode at them.",
+    "The five upstream repositories are git submodules in the repository root and must be fetched, otherwise the configured paths are empty.",
+    "skills.json is a fragment to merge into the global opencode.json, not a config file on its own.",
+    "All paths are absolute or start with ~/ because relative entries resolve against the current working directory, not the config file.",
+    "No configured source points at the repository root, so the upstream repositories checked out there are never scanned for skills; pptx-render is referenced by its own directory.",
+    "The one exception to 'no copies' is pptx-render: it has no public upstream repository, so its two files are stored here as the original source.",
+    "The locally patched SKILL.md files for pptx-generator and pptx-from-layouts are not part of this repository; installing from upstream loses those machine notes."
+  ],
+  "skills": {
+    "pptx-render": {
+      "source": "this repository",
+      "path": "pptx-render",
+      "license": null,
+      "note": "Local-only skill, no public upstream repository exists. Shipped as the original."
+    },
+    "gradle-best-practices": {
+      "repo": "https://github.com/gradle/gradle-skills",
+      "path": "skills/gradle-best-practices",
+      "commit": "b26b14955e3a3ada5d1e90a4e08e2f10b2b54b5d",
+      "license": "Apache-2.0"
+    },
+    "gradle-wrapper-upgrade": {
+      "repo": "https://github.com/gradle/gradle-skills",
+      "path": "skills/gradle-wrapper-upgrade",
+      "commit": "b26b14955e3a3ada5d1e90a4e08e2f10b2b54b5d",
+      "license": "Apache-2.0"
+    },
+    "pptx-generator": {
+      "repo": "https://github.com/MiniMax-AI/skills",
+      "path": "skills/pptx-generator",
+      "commit": "60aaae52bb2af8162732751a4332f62a5fef518b",
+      "license": "MIT"
+    },
+    "pptx-from-layouts": {
+      "repo": "https://github.com/tristan-mcinnis/pptx-from-layouts-skill",
+      "path": ".claude/skills/pptx-from-layouts",
+      "commit": "46e7c6638305bcb424f257b5c49dcd2603dc71ea",
+      "license": "MIT"
+    },
+    "ponytail": {
+      "repo": "https://github.com/DietrichGebert/ponytail",
+      "path": ".openclaw/skills/ponytail",
+      "commit": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "license": "MIT"
+    },
+    "ponytail-audit": {
+      "repo": "https://github.com/DietrichGebert/ponytail",
+      "path": ".openclaw/skills/ponytail-audit",
+      "commit": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "license": "MIT"
+    },
+    "ponytail-review": {
+      "repo": "https://github.com/DietrichGebert/ponytail",
+      "path": ".openclaw/skills/ponytail-review",
+      "commit": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "license": "MIT"
+    },
+    "ponytail-debt": {
+      "repo": "https://github.com/DietrichGebert/ponytail",
+      "path": ".openclaw/skills/ponytail-debt",
+      "commit": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "license": "MIT"
+    },
+    "ponytail-gain": {
+      "repo": "https://github.com/DietrichGebert/ponytail",
+      "path": ".openclaw/skills/ponytail-gain",
+      "commit": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "license": "MIT"
+    },
+    "ponytail-help": {
+      "repo": "https://github.com/DietrichGebert/ponytail",
+      "path": ".openclaw/skills/ponytail-help",
+      "commit": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "license": "MIT"
+    },
+    "unsloop": {
+      "repo": "https://github.com/stamandster/Unsloop",
+      "path": ".agents/skills/unsloop",
+      "commit": "54e355fc1f835b99040d3cf2c62ab9db23f6edc1",
+      "license": "see repository LICENSE"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+name: Update submodules
+
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: submodule-update
+  cancel-in-progress: false
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out with submodules
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Move every submodule to its default branch tip
+        run: git submodule update --remote --recursive
+
+      - name: Verify the expected skills are still there
+        run: |
+          set -euo pipefail
+          paths=(
+            "pptx-render/SKILL.md"
+            "gradle-skills/skills/gradle-best-practices/SKILL.md"
+            "gradle-skills/skills/gradle-wrapper-upgrade/SKILL.md"
+            "minimax-skills/skills/pptx-generator/SKILL.md"
+            "ponytail/.openclaw/skills/ponytail/SKILL.md"
+            "ponytail/.openclaw/skills/ponytail-audit/SKILL.md"
+            "ponytail/.openclaw/skills/ponytail-review/SKILL.md"
+            "ponytail/.openclaw/skills/ponytail-debt/SKILL.md"
+            "ponytail/.openclaw/skills/ponytail-gain/SKILL.md"
+            "ponytail/.openclaw/skills/ponytail-help/SKILL.md"
+            "pptx-from-layouts-skill/.claude/skills/pptx-from-layouts/SKILL.md"
+            "unsloop/.agents/skills/unsloop/SKILL.md"
+          )
+          missing=0
+          for p in "${paths[@]}"; do
+            if [ ! -f "$p" ]; then
+              echo "missing: $p"
+              missing=1
+            fi
+          done
+          exit "$missing"
+
+      - name: Commit and push when something moved
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "All submodules already at their latest commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Update submodules to the latest upstream commits"
+          git push

@@ -1,0 +1,15 @@
+[submodule "gradle-skills"]
+	path = gradle-skills
+	url = https://github.com/gradle/gradle-skills.git
+[submodule "minimax-skills"]
+	path = minimax-skills
+	url = https://github.com/MiniMax-AI/skills.git
+[submodule "ponytail"]
+	path = ponytail
+	url = https://github.com/DietrichGebert/ponytail.git
+[submodule "pptx-from-layouts-skill"]
+	path = pptx-from-layouts-skill
+	url = https://github.com/tristan-mcinnis/pptx-from-layouts-skill.git
+[submodule "unsloop"]
+	path = unsloop
+	url = https://github.com/stamandster/Unsloop.git
