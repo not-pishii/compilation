@@ -13,3 +13,6 @@
 [submodule "unsloop"]
 	path = unsloop
 	url = https://github.com/stamandster/Unsloop.git
+[submodule "unsloop-ui"]
+	path = unsloop-ui
+	url = https://github.com/heydamir/unslop.git

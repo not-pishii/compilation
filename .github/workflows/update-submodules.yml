@@ -41,6 +41,7 @@ jobs:
             "ponytail/.openclaw/skills/ponytail-help/SKILL.md"
             "pptx-from-layouts-skill/.claude/skills/pptx-from-layouts/SKILL.md"
             "unsloop/.agents/skills/unsloop/SKILL.md"
+            "unslop-ui/skills/unslop/SKILL.md"
           )
           missing=0
           for p in "${paths[@]}"; do

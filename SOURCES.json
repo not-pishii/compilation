@@ -6,7 +6,8 @@
   "target": "~/.config/opencode/opencode.json (global config)",
   "notes": [
     "This repository holds no skill copies. It is a settings package: submodule pins plus the skills.paths list that points OpenCode at them.",
-    "The five upstream repositories are git submodules in the repository root and must be fetched, otherwise the configured paths are empty.",
+    "The six upstream repositories are git submodules in the repository root and must be fetched, otherwise the configured paths are empty.",
+    "unslop-ui is renamed on disk after cloning: upstream ships skills/unslop, and the skill ID comes from the directory name, so it would shadow the prose unsloop. The submodule pin keeps the upstream layout, so re-apply the rename after a fresh clone.",
     "skills.json is a fragment to merge into the global opencode.json, not a config file on its own.",
     "All paths are absolute or start with ~/ because relative entries resolve against the current working directory, not the config file.",
     "No configured source points at the repository root, so the upstream repositories checked out there are never scanned for skills; pptx-render is referenced by its own directory.",
@@ -85,6 +86,13 @@
       "path": ".agents/skills/unsloop",
       "commit": "54e355fc1f835b99040d3cf2c62ab9db23f6edc1",
       "license": "see repository LICENSE"
+    },
+    "unslop-ui": {
+      "repo": "https://github.com/heydamir/unslop",
+      "path": "skills/unslop-ui",
+      "commit": "a6f121eee5f29c2f74976b75456feae8b66afb3a",
+      "license": "CC-BY-4.0",
+      "note": "Upstream path is skills/unslop; the directory is renamed to unslop-ui on disk so its ID does not shadow the prose unsloop."
     }
   }
 }
