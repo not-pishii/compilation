@@ -1,6 +1,7 @@
 {
   "install": [
     "git clone --recurse-submodules https://github.com/not-pishii/compilation.git ~/projects/compilation",
+    "mv ~/projects/compilation/unslop-ui/skills/unslop ~/projects/compilation/unslop-ui/skills/unslop-ui",
     "merge skills.json into ~/.config/opencode/opencode.json"
   ],
   "target": "~/.config/opencode/opencode.json (global config)",
