@@ -1,14 +1,14 @@
 {
   "install": [
     "git clone --recurse-submodules https://github.com/not-pishii/compilation.git ~/projects/compilation",
-    "mv ~/projects/compilation/unslop-ui/skills/unslop ~/projects/compilation/unslop-ui/skills/unslop-ui",
+    "cp -r ~/projects/compilation/unslop-ui/skills/unslop ~/.config/opencode/skills/unslop-ui",
     "merge skills.json into ~/.config/opencode/opencode.json"
   ],
   "target": "~/.config/opencode/opencode.json (global config)",
   "notes": [
     "This repository holds no skill copies. It is a settings package: submodule pins plus the skills.paths list that points OpenCode at them.",
     "The six upstream repositories are git submodules in the repository root and must be fetched, otherwise the configured paths are empty.",
-    "unslop-ui is renamed on disk after cloning: upstream ships skills/unslop, and the skill ID comes from the directory name, so it would shadow the prose unsloop. The submodule pin keeps the upstream layout, so re-apply the rename after a fresh clone.",
+    "unslop-ui does not load from the submodule worktree. Upstream ships skills/unslop, and the skill ID is the directory name, so it would shadow the prose unsloop. It is installed as a copy into ~/.config/opencode/skills/unslop-ui, which is a default discovery root and takes no config entry. The submodule stays the pinned upstream source; re-copy after bumping it.",
     "skills.json is a fragment to merge into the global opencode.json, not a config file on its own.",
     "All paths are absolute or start with ~/ because relative entries resolve against the current working directory, not the config file.",
     "No configured source points at the repository root, so the upstream repositories checked out there are never scanned for skills; pptx-render is referenced by its own directory.",
@@ -90,10 +90,10 @@
     },
     "unslop-ui": {
       "repo": "https://github.com/heydamir/unslop",
-      "path": "skills/unslop-ui",
+      "path": "skills/unslop",
       "commit": "a6f121eee5f29c2f74976b75456feae8b66afb3a",
       "license": "CC-BY-4.0",
-      "note": "Upstream path is skills/unslop; the directory is renamed to unslop-ui on disk so its ID does not shadow the prose unsloop."
+      "note": "Installed as a copy at ~/.config/opencode/skills/unslop-ui so the ID does not shadow the prose unsloop. No skills.json entry: that directory is discovered by default."
     }
   }
 }
